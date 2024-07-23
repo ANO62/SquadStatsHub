@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SquadStatsHub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            background-color: #61dafb;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .content {
+            margin: 20px;
+            padding: 20px;
+            background-color: #3b3f47;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #61dafb;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #52a6db;
+        }
+        .stats {
+            margin-top: 20px;
+        }
+        .stat {
+            background-color: #4c4f56;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .instructions {
+            margin: 20px;
+            padding: 20px;
+            background-color: #3b3f47;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .instructions h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SquadStatsHub</h1>
+    </header>
+    <div class="content">
+        <div class="form-group">
+            <label for="playerId">Enter Player ID</label>
+            <input type="text" id="playerId" placeholder="Player ID">
+        </div>
+        <button class="btn" onclick="fetchStats()">Get Stats</button>
+        <div class="stats" id="stats">
+            <!-- Placeholder for player stats -->
+            <div class="stat">
+                <h3>Player Name: John Doe</h3>
+                <p>Total Matches: 100</p>
+                <p>Wins: 50</p>
+                <p>Losses: 50</p>
+                <p>Kill/Death Ratio: 1.5</p>
+                <p>Kill Count: 150</p>
+                <p>Maps Played: Al Basrah, Gorodok, Kamdesh</p>
+                <p>Best Roles: Squad Leader, Medic, Marksman</p>
+            </div>
+        </div>
+    </div>
+    <div class="instructions">
+        <h2>How to Find Your Player ID</h2>
+        <p>1. Open Steam and go to your profile.</p>
+        <p>2. Right-click on your profile and select "Copy Page URL".</p>
+        <p>3. The Player ID is the long number at the end of the URL.</p>
+        <p>Example: If your profile URL is <em>https://steamcommunity.com/profiles/12345678901234567/</em>, your Player ID is <em>12345678901234567</em>.</p>
+    </div>
+    <script>
+        function fetchStats() {
+            const playerId = document.getElementById('playerId').value;
+            const stats = document.getElementById('stats');
+
+            // Placeholder data for demonstration purposes
+            const playerStats = {
+                name: "John Doe",
+                totalMatches: 100,
+                wins: 50,
+                losses: 50,
+                kdRatio: 1.5,
+                killCount: 150,
+                mapsPlayed: ["Al Basrah", "Gorodok", "Kamdesh"],
+                bestRoles: ["Squad Leader", "Medic", "Marksman"]
+            };
+
+            stats.innerHTML = `
+                <div class="stat">
+                    <h3>Player Name: ${playerStats.name}</h3>
+                    <p>Total Matches: ${playerStats.totalMatches}</p>
+                    <p>Wins: ${playerStats.wins}</p>
+                    <p>Losses: ${playerStats.losses}</p>
+                    <p>Kill/Death Ratio: ${playerStats.kdRatio}</p>
+                    <p>Kill Count: ${playerStats.killCount}</p>
+                    <p>Maps Played: ${playerStats.mapsPlayed.join(", ")}</p>
+                    <p>Best Roles: ${playerStats.bestRoles.join(", ")}</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
